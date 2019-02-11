@@ -1,0 +1,62 @@
+﻿<Page x:Class="GastosCanarios.GastosCanariosInicio"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GastosCanarios"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="GastosCanarios-Inicio">
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" >Reporte de Gastos Canarios</Label>
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource listHeaderStyle}">
+            <Label Style="{StaticResource listHeaderTextStyle}">Empleados</Label>
+        </Border>
+        <ListBox Name="ListadoPersonas" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Source={StaticResource CanariosGastosDataSource}, XPath=Persona}" ItemTemplate="{StaticResource nameItemTemplate}">>
+            
+        </ListBox>
+        <Button Grid.Column="1" Grid.Row="3" Click="Button_Click" Style="{StaticResource buttonStyle}">Consulta</Button>
+        <Grid.Background>
+            <ImageBrush ImageSource="C:\Users\Julia\source\repos\GastosCanarios\GastosCanarios\fondo2.jpg"  />
+        </Grid.Background>
+        <Grid.Resources>
+
+            <XmlDataProvider x:Key="CanariosGastosDataSource" XPath="CanariosGastos">
+                <x:XData>
+                    <CanariosGastos>
+                        <Persona Nombre="Orfenys Pérez" Cargo="Gerente">
+                            <CanariosGastos TipoGasto="Almuerzo" MontoGasto="320000" />
+                            <CanariosGastos TipoGasto="Transporte" MontoGasto="500000" />
+                        </Persona>
+                        <Persona Nombre="John Centeno" Cargo="Publicidad">
+                            <CanariosGastos TipoGasto="Representación" MontoGasto="150000"/>
+                            <CanariosGastos TipoGasto="Impresiones" MontoGasto="125000" />
+                        </Persona>
+                        <Persona Nombre="Carlos Tello" Cargo="Ingeniero">
+                            <CanariosGastos TipoGasto="Adquisición" MontoGasto="5000000"/>
+                            <CanariosGastos TipoGasto="Certificación" MontoGasto="600000" />
+                            <CanariosGastos TipoGasto="Software" MontoGasto="2500000" />
+                        </Persona>
+                        <Persona Nombre="Oscar Rojas" Cargo="Contador">
+                            <CanariosGastos TipoGasto="Negocios" MontoGasto="6800000" />
+                        </Persona>
+                    </CanariosGastos>
+                </x:XData>
+            </XmlDataProvider>
+            <DataTemplate x:Key="nameItemTemplate">
+                <Label Content="{Binding XPath=@Nombre}"/>
+            </DataTemplate>
+        </Grid.Resources>
+    </Grid>
+</Page>
