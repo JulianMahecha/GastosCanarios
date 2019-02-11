@@ -9,27 +9,6 @@
       Title="GastosCanarios-Inicio">
 
     <Grid Margin="10">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="230" />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" >Reporte de Gastos Canarios</Label>
-        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource listHeaderStyle}">
-            <Label Style="{StaticResource listHeaderTextStyle}">Empleados</Label>
-        </Border>
-        <ListBox Name="ListadoPersonas" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Source={StaticResource CanariosGastosDataSource}, XPath=Persona}" ItemTemplate="{StaticResource nameItemTemplate}">>
-            
-        </ListBox>
-        <Button Grid.Column="1" Grid.Row="3" Click="Button_Click" Style="{StaticResource buttonStyle}">Consulta</Button>
-        <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\Julia\source\repos\GastosCanarios\GastosCanarios\fondo2.jpg"  />
-        </Grid.Background>
         <Grid.Resources>
 
             <XmlDataProvider x:Key="CanariosGastosDataSource" XPath="CanariosGastos">
@@ -58,5 +37,27 @@
                 <Label Content="{Binding XPath=@Nombre}"/>
             </DataTemplate>
         </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="230" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Column="1" Style="{StaticResource headerTextStyle}" >Reporte de Gastos Canarios</Label>
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource listHeaderStyle}">
+            <Label Style="{StaticResource listHeaderTextStyle}">Empleados</Label>
+        </Border>
+        <ListBox Name="ListadoPersonas" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding Source={StaticResource CanariosGastosDataSource}, XPath=Persona}" ItemTemplate="{StaticResource nameItemTemplate}">>
+            
+        </ListBox>
+        <Button Grid.Column="1" Grid.Row="3" Click="Button_Click" Style="{StaticResource buttonStyle}">Consulta</Button>
+        <Grid.Background>
+            <ImageBrush ImageSource="D:\Proyectos\NET\GastosCanarios\GastosCanarios\fondo2.jpg"  />
+        </Grid.Background>
+        
     </Grid>
 </Page>
